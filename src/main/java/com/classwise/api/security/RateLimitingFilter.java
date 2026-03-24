@@ -29,7 +29,7 @@ public class RateLimitingFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         String path = request.getRequestURI();
-        if (path.startsWith("/api/auth/")) {
+        if (path.equals("/ping") || path.equals("/health") || path.startsWith("/api/auth/")) {
             filterChain.doFilter(request, response);
             return;
         }
